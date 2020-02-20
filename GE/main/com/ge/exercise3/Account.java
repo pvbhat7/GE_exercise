@@ -7,6 +7,11 @@ public class Account {
 
     //private static final Logger logger = LogManager.getLogger(Account.class);
 
+	//commented below 2 static variables & using class variables because , monthly interest rate will be different for saving & checking account,
+	//& if we are setting some value to any one of static variable then it will be applicable to both accounts types
+	//private static float monthlyInterestRate = 1.01f;
+    //private static float monthlyFee = 0.0f;
+    
     private float monthlyInterestRate = 1.01f;
     private float monthlyFee = 0.0f;
 
@@ -19,11 +24,12 @@ public class Account {
         this.accountType = accountType;
         this.balance = balance;
         if (accountType == "Checking") {
+        	//monthlyInterestRate = 1.0f;  -- commented (as per req, checking account should not have interest rate)
             this.monthlyInterestRate = 0.0f;
             this.monthlyFee = 0.0f;
         }
         else if(accountType == "Savings"){
-        	this.monthlyInterestRate = 0.01f;
+        	this.monthlyInterestRate = 0.01f; // as per document , default interest rate for saving account must be 1%
         	this.monthlyFee = 0.0f;
         }
     }
@@ -38,6 +44,8 @@ public class Account {
 
     public float valueNextMonth() {
         //return (balance * monthlyInterestRate) - monthlyFee;
+    	// logic modified -> as per my understanding , purpose of this method is to calculate next month balance of user  
+    	//after adding monthly interest and deducting monthly fees paid to bank
     	return (balance + (balance * monthlyInterestRate)) - monthlyFee;
     }
 

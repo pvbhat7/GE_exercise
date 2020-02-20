@@ -1,5 +1,10 @@
 package com.ge.exercise4;
 
+/**
+ * create new engine class viz. GE(x
+ * @author Prashant Bhat
+ *
+ */
 public class GE9x {
 
 	public final int maxNumRebuilds = 5;

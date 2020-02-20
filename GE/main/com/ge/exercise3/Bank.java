@@ -31,9 +31,11 @@ public class Bank {
 
     public void withdrawFromAccount(String accountNumber, float amount) {
         Account account = getAccount(accountNumber);
+        // here if account type is checking & withdraw req amount is more than 100 then we need to restrict user to continue
         if(account.equals("Checking") && amount > 100.0f)
         	System.out.println("withdraw limit exceeded");
         else{
+        	// if account type is savings & withdraw request amount is greater than existing balance then block the users from continuing.
         	if(account.getBalance() < amount)
         		System.out.println("savings should have non zero balance");        	
         	else
@@ -45,6 +47,10 @@ public class Bank {
         return accountMap.size();
     }
     
+    /**
+     * method to collect of checking account types.
+     * @return sum : no of checking account present in bank
+     */
     public int sumOfCurrentHoldings(){
     	int sum = 0;
     	for(Map.Entry<String, Account> entry : accountMap.entrySet()){
@@ -54,6 +60,11 @@ public class Bank {
     	} 
     	return sum;    	
     }
+    
+    /**
+     * this method will check whether bank made profit or loss base of interest paid to customer vs monthly fees collected from customer
+     * @return
+     */
     public String projectProfitOrLoss(){
     	float interestPaid = 0.0f;
     	float monthlyFees = 0.0f;
@@ -67,8 +78,5 @@ public class Bank {
     		return "no profit no losss";
     	return monthlyFees > interestPaid ? "Profit" : "Loss";
     }
-    
-    
-    
     
 }

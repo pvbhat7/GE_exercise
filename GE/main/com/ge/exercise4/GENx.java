@@ -41,6 +41,9 @@ public class GENx {
     }
 
     public double thrustToWeightRatio() {
+        // change logic as per request , replaced wetWeight by dryWeight
+    	//return takeoffThrust / wetWeight;
+    	
         return takeoffThrust / dryWeight;
     }
 
@@ -48,9 +51,19 @@ public class GENx {
         return ENGINE_MODEL + " SN: " + serialNumber;
     }
     
+    /**
+     * method to calculate how many hours left to rebuild
+     * @return
+     */
+    
     public double hoursLeftBeforeRebuild(){
     	return flightHoursBeforeRebuild - this.flightHours;
     }
+    
+    /**
+     * method to calculate how much service count left for engine
+     * @return
+     */
     
     public int serviceLeft(){
     	if(hoursLeftBeforeRebuild() > 0 )

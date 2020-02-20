@@ -26,6 +26,12 @@ public class ParserTest {
         Application app = parser.parseApplicationData(simpleTestData);
 
         assertEquals("SimpleGroup", app.getGroup("1").getName());
+        
+        // statement commented
+        //reason - incorrect statement , because app.getGroup("1") will return single Group object 
+        //& we can call size() method on single object here
+        //assertEquals("SimpleGroup", app.getGroup("1").size()); 
+        
         assertEquals(1, app.getGroups().size());
 
         assertEquals("Beth Jones", app.getUser("2").getName());

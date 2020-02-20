@@ -3,13 +3,22 @@ package com.ge.exercise1;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * 
+ * @author Prashant Bhat
+ * ApplicationImpl class is extended from Application class because at later stage 
+ * we need to create object of ApplicationImpl , with Application class it won't
+ * be possible because its abstract class
+ * This class has list of groups and users
+ *
+ */
 public class ApplicationImpl extends Application {
 	
 	private List<Group> groupsList;
 	private List<User> usersList;
 
 	public ApplicationImpl(String id, String name) {
-		super(id, name);
+		super(id, name); 
 	}
 
 	@Override

@@ -5,9 +5,13 @@ import java.util.List;
 
 public class MyParser implements Parser{
 
+	/**
+	 * data - it contains string of unparsed input
+	 */
 	@Override
 	public Application parseApplicationData(String data) {
 		
+		// separation of unparsed string into application id , name , groups list , users list
 		int flag1=data.indexOf(":");int flag2=data.indexOf(",");
 		String applicationId = data.substring(flag1+1,flag2).replaceAll("\\s+","");
 		flag1=data.indexOf(":", flag2+1);flag2=data.indexOf(",", flag2+1);
@@ -17,6 +21,7 @@ public class MyParser implements Parser{
 		flag1=data.indexOf("[", flag2+1);flag2=data.lastIndexOf("]");
 		String[] groupList = data.substring(flag1+1,flag2).replaceAll("\\s+","").split(",G");
 		
+		// creating groups list
 		List<Group> groupsList = new ArrayList<>();			
 		for(int i=0;i<groupList.length;i++){
 			groupsList.add(fetchGroup(groupList[i],flag1,flag2));
